@@ -1,3 +1,6 @@
-module.exports = {
-  extends: require.resolve('@umijs/lint/dist/config/eslint'),
-};
+const { getESLintConfig } = require('@applint/spec');
+
+// https://www.npmjs.com/package/@applint/spec
+module.exports = getESLintConfig('react-ts', {
+  rules: {},
+});

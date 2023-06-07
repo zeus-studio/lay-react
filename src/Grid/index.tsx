@@ -3,148 +3,33 @@ import React from 'react';
 
 import './style.less';
 
+type ColSizeType =
+  | '0'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12';
+
 // Col
 export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
-  xs?:
-    | '0'
-    | '1'
-    | '2'
-    | '3'
-    | '4'
-    | '5'
-    | '6'
-    | '7'
-    | '8'
-    | '9'
-    | '10'
-    | '11'
-    | '12';
-  sm?:
-    | '0'
-    | '1'
-    | '2'
-    | '3'
-    | '4'
-    | '5'
-    | '6'
-    | '7'
-    | '8'
-    | '9'
-    | '10'
-    | '11'
-    | '12';
-  md?:
-    | '0'
-    | '1'
-    | '2'
-    | '3'
-    | '4'
-    | '5'
-    | '6'
-    | '7'
-    | '8'
-    | '9'
-    | '10'
-    | '11'
-    | '12';
-  lg?:
-    | '0'
-    | '1'
-    | '2'
-    | '3'
-    | '4'
-    | '5'
-    | '6'
-    | '7'
-    | '8'
-    | '9'
-    | '10'
-    | '11'
-    | '12';
-  xl?:
-    | '0'
-    | '1'
-    | '2'
-    | '3'
-    | '4'
-    | '5'
-    | '6'
-    | '7'
-    | '8'
-    | '9'
-    | '10'
-    | '11'
-    | '12';
-  offsetXs?:
-    | '0'
-    | '1'
-    | '2'
-    | '3'
-    | '4'
-    | '5'
-    | '6'
-    | '7'
-    | '8'
-    | '9'
-    | '10'
-    | '11'
-    | '12';
-  offsetSm?:
-    | '0'
-    | '1'
-    | '2'
-    | '3'
-    | '4'
-    | '5'
-    | '6'
-    | '7'
-    | '8'
-    | '9'
-    | '10'
-    | '11'
-    | '12';
-  offsetMd?:
-    | '0'
-    | '1'
-    | '2'
-    | '3'
-    | '4'
-    | '5'
-    | '6'
-    | '7'
-    | '8'
-    | '9'
-    | '10'
-    | '11'
-    | '12';
-  offsetLg?:
-    | '0'
-    | '1'
-    | '2'
-    | '3'
-    | '4'
-    | '5'
-    | '6'
-    | '7'
-    | '8'
-    | '9'
-    | '10'
-    | '11'
-    | '12';
-  offsetXl?:
-    | '0'
-    | '1'
-    | '2'
-    | '3'
-    | '4'
-    | '5'
-    | '6'
-    | '7'
-    | '8'
-    | '9'
-    | '10'
-    | '11'
-    | '12';
+  xs?: ColSizeType;
+  sm?: ColSizeType;
+  md?: ColSizeType;
+  lg?: ColSizeType;
+  xl?: ColSizeType;
+  offsetXs?: ColSizeType;
+  offsetSm?: ColSizeType;
+  offsetMd?: ColSizeType;
+  offsetLg?: ColSizeType;
+  offsetXl?: ColSizeType;
 }
 
 export const Col: React.FC<ColProps> = (props: ColProps) => {
@@ -221,6 +106,8 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
     | '28'
     | '30'
     | '32';
+  align?: 'top' | 'center' | 'bottom' | 'baseline' | 'stretch';
+  wrap?: boolean;
 }
 
 export const Row: React.FC<RowProps> = (props: RowProps) => {
@@ -232,12 +119,20 @@ export const Row: React.FC<RowProps> = (props: RowProps) => {
     xl = 'show',
     space = '0',
     children,
+    align = 'top',
+    wrap = false,
     ...ret
   } = props;
 
   const rowClassNames = React.useMemo(
     () =>
       classnames('lay-row', {
+        'lay-row__align-top': align === 'top',
+        'lay-row__align-center': align === 'center',
+        'lay-row__align-bottom': align === 'bottom',
+        'lay-row__align-baseline': align === 'baseline',
+        'lay-row__align-stretch': align === 'stretch',
+        'lay-row__wrap': wrap,
         'lay-show-xs-block': xs === 'show',
         'lay-show-sm-block': sm === 'show',
         'lay-show-md-block': md === 'show',
@@ -250,7 +145,7 @@ export const Row: React.FC<RowProps> = (props: RowProps) => {
         'lay-hide-xl': xl === 'hide',
         [`lay-col-space${space}`]: space !== '0',
       }),
-    [xs, sm, md, lg, xl, space],
+    [xs, sm, md, lg, xl, space, align, wrap],
   );
 
   return (

@@ -1,20 +1,25 @@
-/* 栅格布局 */
-.lay-container {
-  position: relative;
-  margin: 0 auto;
+/* 栅格系统 */
+.lay-row {
+  display: flex;
   box-sizing: border-box;
-}
-.lay-fluid {
-  position: relative;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.lay-row:before,
-.lay-row:after {
-  content: '';
-  display: block;
-  clear: both;
+  &__align-top {
+    align-items: flex-start;
+  }
+  &__align-center {
+    align-items: center;
+  }
+  &__align-bottom {
+    align-items: flex-end;
+  }
+  &__align-baseline {
+    align-items: baseline;
+  }
+  &__align-stretch {
+    align-items: stretch;
+  }
+  &__wrap {
+    flex-wrap: wrap;
+  }
 }
 .lay-col-xs1,
 .lay-col-xs2,
@@ -171,9 +176,6 @@
 
 /* 超小屏幕 */
 @media screen and (max-width: 767.98px) {
-  .lay-container {
-    padding: 0 15px;
-  }
   .lay-hide-xs {
     display: none !important;
   }
@@ -190,9 +192,6 @@
 
 /* 小型屏幕 */
 @media screen and (min-width: 768px) {
-  .lay-container {
-    width: 720px;
-  }
   .lay-hide-sm {
     display: none !important;
   }
@@ -296,9 +295,6 @@
 }
 /* 中型屏幕 */
 @media screen and (min-width: 992px) {
-  .lay-container {
-    width: 960px;
-  }
   .lay-hide-md {
     display: none !important;
   }
@@ -402,9 +398,6 @@
 }
 /* 大型屏幕 */
 @media screen and (min-width: 1200px) {
-  .lay-container {
-    width: 1150px;
-  }
   .lay-hide-lg {
     display: none !important;
   }
@@ -508,9 +501,6 @@
 }
 /* 超大屏幕 */
 @media screen and (min-width: 1400px) {
-  .lay-container {
-    width: 1330px;
-  }
   .lay-hide-xl {
     display: none !important;
   }
