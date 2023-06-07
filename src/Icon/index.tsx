@@ -60,9 +60,9 @@ export type IconName =
   | 'rate'
   | 'cellphone'
   | 'vercode'
-  | 'login-weibo'
-  | 'login-qq'
-  | 'login-wechat'
+  | 'weibo'
+  | 'qq'
+  | 'wechat'
   | 'username'
   | 'password'
   | 'refresh-3'
@@ -167,11 +167,11 @@ export type IconName =
   | 'triangle-d'
   | 'set-sm'
   | 'add-circle'
-  | 'layim-download'
-  | 'layim-uploadfile'
+  | 'download'
+  | 'uploadfile'
   | '404'
   | 'about'
-  | 'layim-theme'
+  | 'theme-1'
   | 'down'
   | 'up'
   | 'circle-dot'
@@ -221,7 +221,7 @@ const Icon: FC<IconProps> = (props: IconProps) => {
     return _style;
   }, [size, color, style]);
 
-  return <span className={iconClassNames} style={iconStyle}></span>;
+  return <span className={iconClassNames} style={iconStyle} />;
 };
 
 export default Icon;
