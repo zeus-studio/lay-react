@@ -45,6 +45,8 @@ export default () => (
 
 ## 设置间隔
 
+给 `Row` 添加 space 属性，可以设置 `Col` 之间的间隔，如下代码所示：
+
 ```jsx
 import { Row, Col } from 'lay-react';
 
@@ -55,7 +57,7 @@ const blockStyle = {
 };
 
 export default () => (
-  <Row space="6">
+  <Row space="md">
     <Col md="6" lg="6" xl="6">
       <div style={{ ...blockStyle, background: '#64ba79' }}>1</div>
     </Col>
@@ -89,32 +91,58 @@ export default () => (
 );
 ```
 
-### Props 说明
+## 设置对齐方式
+
+```jsx
+import { Row, Col } from 'lay-react';
+
+const blockStyle = {
+  textAlign: 'center',
+  color: 'white',
+};
+
+export default () => (
+  <Row align="center">
+    <Col md="6" lg="6" xl="6">
+      <div style={{ ...blockStyle, background: '#64ba79', lineHeight: '36px' }}>
+        1
+      </div>
+    </Col>
+    <Col md="6" lg="6" xl="6">
+      <div style={{ ...blockStyle, background: '#79c48c', lineHeight: '56px' }}>
+        2 offset-2
+      </div>
+    </Col>
+  </Row>
+);
+```
+
+## Props 说明
 
 ### \<Row\>
 
-| 属性名 | 属性类型 | 说明                                                                                   |
-| :----: | :------: | -------------------------------------------------------------------------------------- |
-|   xs   |  string  | 在超小屏幕页面显示情况，show-展示，hide-隐藏，默认显示                                 |
-|   sm   |  string  | 在小屏幕页面显示情况，show-展示，hide-隐藏，默认显示                                   |
-|   md   |  string  | 在中等屏幕页面显示情况，show-展示，hide-隐藏，默认显示                                 |
-|   lg   |  string  | 在宽屏幕页面显示情况，show-展示，hide-隐藏，默认显示                                   |
-|   xl   |  string  | 在超大屏幕页面显示情况，show-展示，hide-隐藏，默认显示                                 |
-| space  |  string  | 列之间的间隔，默认为 0                                                                 |
-|  wrap  | boolean  | 溢出是否换行，默认 false 不换行                                                        |
-| align  |  string  | 每列的垂直方向对齐方式，值为 top、center、bottom、baseline、stretch 中的一个，默认 top |
+| 属性名 | 属性类型 | 必选 | 默认值 | 说明                                                                                          |
+| :----: | :------: | :--: | :----: | --------------------------------------------------------------------------------------------- |
+|   xs   |  string  |  -   |  show  | 在超小屏幕页面显示情况，show-展示，hide-隐藏                                                  |
+|   sm   |  string  |  -   |  show  | 在小屏幕页面显示情况，show-展示，hide-隐藏                                                    |
+|   md   |  string  |  -   |  show  | 在中等屏幕页面显示情况，show-展示，hide-隐藏                                                  |
+|   lg   |  string  |  -   |  show  | 在宽屏幕页面显示情况，show-展示，hide-隐藏                                                    |
+|   xl   |  string  |  -   |  show  | 在超大屏幕页面显示情况，show-展示，hide-隐藏                                                  |
+| space  |  string  |  -   |   -    | 列之间的间隔，取值为 xs、sm、md、lg、xl 表示五种不同的规格间距，**跟属性名 xs~xl 无任何关系** |
+|  wrap  | boolean  |  -   | false  | 溢出是否换行，默认不换行                                                                      |
+| align  |  string  |  -   |  top   | 每列的垂直方向对齐方式，值为 top、center、bottom、baseline、stretch 中的一个                  |
 
 ### \<Col\>
 
-|  属性名  | 属性类型 | 说明                                                       |
-| :------: | :------: | ---------------------------------------------------------- |
-|    xs    |  string  | 在超小屏幕页面行内所占比例，0~12，默认 12，当为 0 时不显示 |
-|    sm    |  string  | 在小屏幕页面行内所占比例，0~12，默认 12，当为 0 时不显示   |
-|    md    |  string  | 在中等屏幕页面行内所占比例，0~12，默认 12，当为 0 时不显示 |
-|    lg    |  string  | 在宽屏幕页面行内所占比例，0~12，默认 12，当为 0 时不显示   |
-|    xl    |  string  | 在超大屏幕页面行内所占比例，0~12，默认 12，当为 0 时不显示 |
-| offsetXs |  string  | 在超小屏幕页面行内左侧偏移比例，0~12，默认 0 不偏移        |
-| offsetSm |  string  | 在小屏幕页面行内左侧偏移比例，0~12，默认 0 不偏移          |
-| offsetMd |  string  | 在中等屏幕页面行内左侧偏移比例，0~12，默认 0 不偏移        |
-| offsetLg |  string  | 在宽屏幕页面行内左侧偏移比例，0~12，默认 0 不偏移          |
-| offsetXl |  string  | 在超大屏幕页面行内左侧偏移比例，0~12，默认 0 不偏移        |
+|  属性名  | 属性类型 | 必选 | 默认值 | 说明                                 |
+| :------: | :------: | :--: | :----: | ------------------------------------ |
+|    xs    |  string  |  -   |   12   | 在超小屏幕页面行内所占比例，0~12     |
+|    sm    |  string  |  -   |   12   | 在小屏幕页面行内所占比例，0~12       |
+|    md    |  string  |  -   |   12   | 在中等屏幕页面行内所占比例，0~12     |
+|    lg    |  string  |  -   |   12   | 在宽屏幕页面行内所占比例，0~12       |
+|    xl    |  string  |  -   |   12   | 在超大屏幕页面行内所占比例，0~12     |
+| offsetXs |  string  |  -   |   0    | 在超小屏幕页面行内左侧偏移比例，0~12 |
+| offsetSm |  string  |  -   |   0    | 在小屏幕页面行内左侧偏移比例，0~12   |
+| offsetMd |  string  |  -   |   0    | 在中等屏幕页面行内左侧偏移比例，0~12 |
+| offsetLg |  string  |  -   |   0    | 在宽屏幕页面行内左侧偏移比例，0~12   |
+| offsetXl |  string  |  -   |   0    | 在超大屏幕页面行内左侧偏移比例，0~12 |

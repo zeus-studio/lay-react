@@ -84,28 +84,7 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   md?: 'hide' | 'show';
   lg?: 'hide' | 'show';
   xl?: 'hide' | 'show';
-  space?:
-    | '0'
-    | '1'
-    | '2'
-    | '4'
-    | '5'
-    | '6'
-    | '8'
-    | '10'
-    | '12'
-    | '14'
-    | '15'
-    | '16'
-    | '18'
-    | '20'
-    | '22'
-    | '24'
-    | '25'
-    | '26'
-    | '28'
-    | '30'
-    | '32';
+  space?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   align?: 'top' | 'center' | 'bottom' | 'baseline' | 'stretch';
   wrap?: boolean;
 }
@@ -127,23 +106,19 @@ export const Row: React.FC<RowProps> = (props: RowProps) => {
   const rowClassNames = React.useMemo(
     () =>
       classnames('lay-row', {
-        'lay-row__align-top': align === 'top',
-        'lay-row__align-center': align === 'center',
-        'lay-row__align-bottom': align === 'bottom',
-        'lay-row__align-baseline': align === 'baseline',
-        'lay-row__align-stretch': align === 'stretch',
+        [`lay-row__align-${align}`]: align,
         'lay-row__wrap': wrap,
-        'lay-show-xs-block': xs === 'show',
-        'lay-show-sm-block': sm === 'show',
-        'lay-show-md-block': md === 'show',
-        'lay-show-lg-block': lg === 'show',
-        'lay-show-xl-block': xl === 'show',
-        'lay-hide-xs': xs === 'hide',
-        'lay-hide-sm': sm === 'hide',
-        'lay-hide-md': md === 'hide',
-        'lay-hide-lg': lg === 'hide',
-        'lay-hide-xl': xl === 'hide',
-        [`lay-col-space${space}`]: space !== '0',
+        'lay-row-show-xs': xs === 'show',
+        'lay-row-show-sm': sm === 'show',
+        'lay-row-show-md': md === 'show',
+        'lay-row-show-lg': lg === 'show',
+        'lay-row-show-xl': xl === 'show',
+        'lay-row-hide-xs': xs === 'hide',
+        'lay-row-hide-sm': sm === 'hide',
+        'lay-row-hide-md': md === 'hide',
+        'lay-row-hide-lg': lg === 'hide',
+        'lay-row-hide-xl': xl === 'hide',
+        [`lay-col-space-${space}`]: !!space,
       }),
     [xs, sm, md, lg, xl, space, align, wrap],
   );
